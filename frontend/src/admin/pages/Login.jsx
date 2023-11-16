@@ -2,7 +2,6 @@ import React from 'react'
 
 const Login = () => {
   return (
-    <>
         <div className="account-pages my-5 pt-sm-5">
             <div className="container">
                 <div className="row justify-content-center">
@@ -108,7 +107,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    </>
+    
   )
 }
 
