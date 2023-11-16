@@ -4,7 +4,7 @@ import MasterLayout from '../components/MasterLayout';
 const Home = () => {
   return (
       <MasterLayout>
-
+        
       </MasterLayout>
   )
 }

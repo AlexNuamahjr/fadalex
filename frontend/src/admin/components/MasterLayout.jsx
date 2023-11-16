@@ -19,19 +19,19 @@ const MasterLayout = () => {
                         <div className="navbar-brand-box">
                             <a href="index.html" className="logo logo-dark">
                                 <span className="logo-sm">
-                                    <img src="assets/images/logo.svg" alt="" height="22"/>
+                                    <img src="/assets/images/logo.svg" alt="" height="22"/>
                                 </span>
                                 <span className="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17"/>
+                                    <img src="/assets/images/logo-dark.png" alt="" height="17"/>
                                 </span>
                             </a>
 
                             <a href="index.html" className="logo logo-light">
                                 <span className="logo-sm">
-                                    <img src="assets/images/logo-light.svg" alt="" height="22"/>
+                                    <img src="/assets/images/logo-light.svg" alt="" height="22"/>
                                 </span>
                                 <span className="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="19"/>
+                                    <img src="/assets/images/logo-light.png" alt="" height="19"/>
                                 </span>
                             </a>
                         </div>
@@ -169,7 +169,7 @@ const MasterLayout = () => {
 
                                             <div className="col-sm-5">
                                                 <div>
-                                                    <img src="assets/images/megamenu-img.png" alt="" className="img-fluid mx-auto d-block"/>
+                                                    <img src="/assets/images/megamenu-img.png" alt="" className="img-fluid mx-auto d-block"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -206,32 +206,32 @@ const MasterLayout = () => {
                         <div className="dropdown d-inline-block">
                             <button type="button" className="btn header-item waves-effect"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16"/>
+                                <img id="header-lang-img" src="/assets/images/flags/us.jpg" alt="Header Language" height="16"/>
                             </button>
                             <div className="dropdown-menu dropdown-menu-end">
 
                                 {/* <!-- item--> */}
                                 <a href="#" className="dropdown-item notify-item language" data-lang="en">
-                                    <img src="assets/images/flags/us.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">English</span>
+                                    <img src="/assets/images/flags/us.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">English</span>
                                 </a>
                                 {/* <!-- item--> */}
                                 <a href="#" className="dropdown-item notify-item language" data-lang="sp">
-                                    <img src="assets/images/flags/spain.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">Spanish</span>
+                                    <img src="/assets/images/flags/spain.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">Spanish</span>
                                 </a>
 
                                 {/* <!-- item--> */}
                                 <a href="#" className="dropdown-item notify-item language" data-lang="gr">
-                                    <img src="assets/images/flags/germany.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">German</span>
+                                    <img src="/assets/images/flags/germany.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">German</span>
                                 </a>
 
                                 {/* <!-- item--> */}
                                 <a href="#" className="dropdown-item notify-item language" data-lang="it">
-                                    <img src="assets/images/flags/italy.jpg" alt="user-image" className="me-1" height="12" /> <span className="align-middle">Italian</span>
+                                    <img src="/assets/images/flags/italy.jpg" alt="user-image" className="me-1" height="12" /> <span className="align-middle">Italian</span>
                                 </a>
 
                                 {/* <!-- item--> */}
                                 <a href="#" className="dropdown-item notify-item language" data-lang="ru">
-                                    <img src="assets/images/flags/russia.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">Russian</span>
+                                    <img src="/assets/images/flags/russia.jpg" alt="user-image" className="me-1" height="12"/> <span className="align-middle">Russian</span>
                                 </a>
                             </div>
                         </div>
@@ -246,19 +246,19 @@ const MasterLayout = () => {
                                     <div className="row g-0">
                                         <div className="col">
                                             <a className="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/github.png" alt="Github"/>
+                                                <img src="/assets/images/brands/github.png" alt="Github"/>
                                                 <span>GitHub</span>
                                             </a>
                                         </div>
                                         <div className="col">
                                             <a className="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/bitbucket.png" alt="bitbucket"/>
+                                                <img src="/assets/images/brands/bitbucket.png" alt="bitbucket"/>
                                                 <span>Bitbucket</span>
                                             </a>
                                         </div>
                                         <div className="col">
                                             <a className="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/dribbble.png" alt="dribbble"/>
+                                                <img src="/assets/images/brands/dribbble.png" alt="dribbble"/>
                                                 <span>Dribbble</span>
                                             </a>
                                         </div>
@@ -267,19 +267,19 @@ const MasterLayout = () => {
                                     <div className="row g-0">
                                         <div className="col">
                                             <a className="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/dropbox.png" alt="dropbox"/>
+                                                <img src="/assets/images/brands/dropbox.png" alt="dropbox"/>
                                                 <span>Dropbox</span>
                                             </a>
                                         </div>
                                         <div className="col">
                                             <a className="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp"/>
+                                                <img src="/assets/images/brands/mail_chimp.png" alt="mail_chimp"/>
                                                 <span>Mail Chimp</span>
                                             </a>
                                         </div>
                                         <div className="col">
                                             <a className="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/slack.png" alt="slack"/>
+                                                <img src="/assets/images/brands/slack.png" alt="slack"/>
                                                 <span>Slack</span>
                                             </a>
                                         </div>
@@ -331,7 +331,7 @@ const MasterLayout = () => {
                                     </a>
                                     <a href="#" className="text-reset notification-item">
                                         <div className="d-flex">
-                                            <img src="assets/images/users/avatar-3.jpg"
+                                            <img src="/assets/images/users/avatar-3.jpg"
                                                 className="me-3 rounded-circle avatar-xs" alt="user-pic"/>
                                             <div className="flex-grow-1">
                                                 <h6 className="mb-1">James Lemire</h6>
@@ -361,7 +361,7 @@ const MasterLayout = () => {
 
                                     <a href="#" className="text-reset notification-item">
                                         <div className="d-flex">
-                                            <img src="assets/images/users/avatar-4.jpg"
+                                            <img src="/assets/images/users/avatar-4.jpg"
                                                 className="me-3 rounded-circle avatar-xs" alt="user-pic"/>
                                             <div className="flex-grow-1">
                                                 <h6 className="mb-1">Salena Layfield</h6>
@@ -384,7 +384,7 @@ const MasterLayout = () => {
                         <div className="dropdown d-inline-block">
                             <button type="button" className="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img className="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
+                                <img className="rounded-circle header-profile-user" src="/assets/images/users/avatar-1.jpg"
                                     alt="Header Avatar"/>
                                 <span className="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
                                 <i className="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -453,7 +453,7 @@ const MasterLayout = () => {
                                                 </div>
                                             </div>
                                             <div className="col-5 align-self-end">
-                                                <img src="assets/images/profile-img.png" alt="" className="img-fluid"/>
+                                                <img src="/assets/images/profile-img.png" alt="" className="img-fluid"/>
                                             </div>
                                         </div>
                                     </div>
@@ -461,7 +461,7 @@ const MasterLayout = () => {
                                         <div className="row">
                                             <div className="col-sm-4">
                                                 <div className="avatar-md profile-user-wid mb-4">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt="" className="img-thumbnail rounded-circle"/>
+                                                    <img src="/assets/images/users/avatar-1.jpg" alt="" className="img-thumbnail rounded-circle"/>
                                                 </div>
                                                 <h5 className="font-size-15 text-truncate">Henry Price</h5>
                                                 <p className="text-muted mb-0 text-truncate">UI/UX Designer</p>
@@ -1025,7 +1025,7 @@ const MasterLayout = () => {
                                             <tr>
                                                 <th scope="row">
                                                     <div>
-                                                        <img src="assets/images/product/img-7.png" alt="" className="avatar-sm"/>
+                                                        <img src="/assets/images/product/img-7.png" alt="" className="avatar-sm"/>
                                                     </div>
                                                 </th>
                                                 <td>
@@ -1039,7 +1039,7 @@ const MasterLayout = () => {
                                             <tr>
                                                 <th scope="row">
                                                     <div>
-                                                        <img src="assets/images/product/img-4.png" alt="" className="avatar-sm"/>
+                                                        <img src="/assets/images/product/img-4.png" alt="" className="avatar-sm"/>
                                                     </div>
                                                 </th>
                                                 <td>
@@ -1149,7 +1149,7 @@ const MasterLayout = () => {
 
                 <div className="p-4">
                     <div className="mb-2">
-                        <img src="assets/images/layouts/layout-1.jpg" className="img-thumbnail" alt="layout images"/>
+                        <img src="/assets/images/layouts/layout-1.jpg" className="img-thumbnail" alt="layout images"/>
                     </div>
 
                     <div className="form-check form-switch mb-3">
@@ -1158,7 +1158,7 @@ const MasterLayout = () => {
                     </div>
     
                     <div className="mb-2">
-                        <img src="assets/images/layouts/layout-2.jpg" className="img-thumbnail" alt="layout images"/>
+                        <img src="/assets/images/layouts/layout-2.jpg" className="img-thumbnail" alt="layout images"/>
                     </div>
                     <div className="form-check form-switch mb-3">
                         <input className="form-check-input theme-choice" type="checkbox" id="dark-mode-switch"/>
@@ -1166,7 +1166,7 @@ const MasterLayout = () => {
                     </div>
     
                     <div className="mb-2">
-                        <img src="assets/images/layouts/layout-3.jpg" className="img-thumbnail" alt="layout images"/>
+                        <img src="/assets/images/layouts/layout-3.jpg" className="img-thumbnail" alt="layout images"/>
                     </div>
                     <div className="form-check form-switch mb-3">
                         <input className="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch"/>
@@ -1174,7 +1174,7 @@ const MasterLayout = () => {
                     </div>
 
                     <div className="mb-2">
-                        <img src="assets/images/layouts/layout-4.jpg" className="img-thumbnail" alt="layout images" />
+                        <img src="/assets/images/layouts/layout-4.jpg" className="img-thumbnail" alt="layout images" />
                     </div>
                     <div className="form-check form-switch mb-5">
                         <input className="form-check-input theme-choice" type="checkbox" id="dark-rtl-mode-switch" />

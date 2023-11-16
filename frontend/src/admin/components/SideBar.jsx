@@ -1,4 +1,4 @@
-import React from 'react'
+import {Link} from 'react-router-dom'
 
 const SideBar = () => {
   return (
@@ -14,68 +14,69 @@ const SideBar = () => {
                         <li className="menu-title" key="t-menu">Menu</li>
 
                         <li>
-                            <a href="#" className="waves-effect">
+                            <Link href="#" className="waves-effect">
                                 <i className="bx bx-home-circle"></i><span className="badge rounded-pill bg-info float-end">04</span>
                                 <span key="t-dashboards">Dashboards</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
-                            <a href="#" className="has-arrow waves-effect">
+                            <Link href="#" className="has-arrow waves-effect">
                                 <i className="bx bx-layout"></i>
                                 <span key="t-layouts">Product</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="menu-title" key="t-apps">Apps</li>
 
                         <li>
-                            <a href="calendar.html" className="waves-effect">
+                            <Link href="calendar.html" className="waves-effect">
                                 <i className="bx bx-calendar"></i>
                                 <span key="t-calendar">Calendar</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
-                            <a href="chat.html" className="waves-effect">
+                            <Link href="chat.html" className="waves-effect">
                                 <i className="bx bx-chat"></i>
                                 <span key="t-chat">Chat</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
-                            <a href="apps-filemanager.html" className="waves-effect">
+                            <Link href="apps-filemanager.html" className="waves-effect">
                                 <i className="bx bx-file"></i>
                                 <span key="t-file-manager">File Manager</span>
-                            </a>
+                            </Link>
                         </li>
-
-                            <a href="#" className="has-arrow waves-effect">
+                        <li>
+                            <Link href="#" className="has-arrow waves-effect">
                                 <i className="bx bx-store"></i>
                                 <span key="t-ecommerce">Coupons</span>
-                            </a> 
+                            </Link> 
+                        </li>
                         <li>
-                            <a href="#" className="has-arrow waves-effect">
+                            <Link href="#" className="has-arrow waves-effect">
                                 <i className="bx bx-receipt"></i>
                                 <span key="t-invoices">Orders</span>
-                            </a>
+                            </Link>
                             
                         </li>
                         <li>
-                            <a href="#" className="has-arrow waves-effect">
+                            <Link href="#" className="has-arrow waves-effect">
                                 <i className="bx bxs-user-detail"></i>
                                 <span key="t-contacts">Contacts</span>
-                            </a>
+                            </Link>
                             
                         </li>
 
                         <li className="menu-title" key="t-pages">Pages</li>
 
                         <li>
-                            <a href="#" className="waves-effect">
+                            <Link href="#" className="waves-effect">
                                 <i className="bx bx-user-circle"></i>
                                 <span key="t-authentication">Authentication</span>
-                            </a>
+                            </Link>
                         </li>
                         <li className="menu-title" key="t-components">Components</li>
                     </ul>
