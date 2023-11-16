@@ -50,15 +50,15 @@ const SideBar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="has-arrow waves-effect">
+                            <Link to={"/admin/services"} className="has-arrow waves-effect">
                                 <i className="bx bx-store"></i>
                                 <span key="t-ecommerce">Coupons</span>
                             </Link> 
                         </li>
                         <li>
-                            <Link href="#" className="has-arrow waves-effect">
+                            <Link  className="has-arrow waves-effect">
                                 <i className="bx bx-receipt"></i>
-                                <span key="t-invoices">Orders</span>
+                                <span key="t-invoices">Departments</span>
                             </Link>
                             
                         </li>
@@ -76,6 +76,30 @@ const SideBar = () => {
                             <Link href="#" className="waves-effect">
                                 <i className="bx bx-user-circle"></i>
                                 <span key="t-authentication">Authentication</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={"/admin/departments"} className="waves-effect">
+                                <i className="bx bx-user-circle"></i>
+                                <span key="t-authentication">Departments</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={"/admin/doctors"} className="waves-effect">
+                                <i className="bx bx-user-circle"></i>
+                                <span key="t-authentication">Doctors</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={"/admin/services"} className="waves-effect">
+                                <i className="bx bx-user-circle"></i>
+                                <span key="t-authentication">Services</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={"/admin/workin-hours"} className="waves-effect">
+                                <i className="bx bx-user-circle"></i>
+                                <span key="t-authentication">Working Hours</span>
                             </Link>
                         </li>
                         <li className="menu-title" key="t-components">Components</li>
