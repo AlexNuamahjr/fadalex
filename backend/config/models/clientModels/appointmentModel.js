@@ -1,36 +1,40 @@
 const dbConnection = require("../../dbConnection");
 const {DataTypes} = require("sequelize");
 
-const workingHours = dbConnection.define("Working_hours", {
+const Appointment = dbConnection.define("Appointment", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    day_1: {
+    department: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    time_1: {
-        type: DataTypes.TIME,
-        allowNull: false
-    },
-    day_2: {
+    doctor: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    time_2: {
+    date_: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+    },
+    time_: {
         type: DataTypes.TIME,
         allowNull: false
     },
-    weekend: {
+    full_name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    time_3: {
-        type: DataTypes.TIME,
+    phone_number: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    message: {
+        type: DataTypes.TEXT,
         allowNull: false
     }
-});
-workingHours.sync();
-module.exports = workingHours;
+})
+Appointment.sync();
+module.exports = Appointment;

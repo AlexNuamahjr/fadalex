@@ -1,4 +1,5 @@
-
+const Appointment = require("../config/models/clientModels/appointmentModel");
+const Contact = require('../config/models/clientModels/contactModel');
 const clientHome = (req, res)=>{
     res.send("Client Home Page");
 }
