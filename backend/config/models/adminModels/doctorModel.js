@@ -1,12 +1,8 @@
 const dbConnection = require("../../dbConnection");
 const {DataTypes} = require("sequelize");
+const Appointment = require("../clientModels/appointmentModel");
 
 const EducationQualification = dbConnection.define("EducationQualification", {
-    id: {
-        primaryKey: true,
-        autoIncrement: true,
-        type: DataTypes.INTEGER
-    },
     education_1:{
         type: DataTypes.STRING,
         allowNull: false,
@@ -61,9 +57,13 @@ const Doctor = dbConnection.define("Doctors", {
         allowNull: false
     },
 });
-Doctor.hasMany(EducationQualification);
-EducationQualification.belongsTo(Doctor);
 Doctor.sync();
+Doctor.hasMany(EducationQualification);
+EducationQualification.belongsTo(Doctor, {targetKey: "name", foreignKey: "n ame"});
+// Doctor.hasMany(Appointment);
+// Appointment.belongsTo(Doctor, {targetKey: "name",foreignKey: "doctorName"});
+
+
 module.exports = {
     Doctor,
     EducationQualification

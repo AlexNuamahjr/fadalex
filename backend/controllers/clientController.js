@@ -16,6 +16,22 @@ const clientDepartment = (req, res)=>{
     res.send("Client Departments Page");
 }
 
+const clientAppointment = (req, res)=>{
+    res.send("Client Appointment");
+}
+
+const clientAppointmentCreate = async(req, res)=>{
+    const {department, doctor, date_, time_, full_name, phone_number, message} = req.body;
+    try {
+        await Appointment.create({department, doctor, date_, time_, full_name, phone_number, message});
+        res.status(201).json({message: "Appointment set successfully"});
+    } catch (error) {
+        console.log(error);
+        res.status(501).json({message: "Something went wrong"});
+    }
+
+}
+
 const clientDoctors = (req, res)=>{
     res.send("Client Doctors Page");
 }
@@ -24,11 +40,28 @@ const clientContact = (req, res)=>{
     res.send("Client Contact Page");
 }
 
+const clientContactCreate = async(req, res)=>{
+    const {full_name, email, topic, phone_number, message} = req.body;
+    try {
+        await Contact.create({full_name, email, topic, phone_number, message});
+        res.status(201).json({message: "Message sent successfully"});
+    } catch (error) {
+        console.log(error);
+        res.status(501).json({message: "Something went wrong"});
+    }
+    
+
+
+}
+
 module.exports = {
     clientHome,
     clientAbout,
     clientService,
     clientDoctors,
     clientContact,
-    clientDepartment
+    clientDepartment,
+    clientContactCreate,
+    clientAppointment,
+    clientAppointmentCreate
 }

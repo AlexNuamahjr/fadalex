@@ -9,7 +9,7 @@ const Service = dbConnection.define("Service", {
     },
     service_title: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     service_content: {
         type: DataTypes.STRING,
@@ -17,4 +17,4 @@ const Service = dbConnection.define("Service", {
     }
 })
 Service.sync()
-module.exports = Service
+module.exports = Service;

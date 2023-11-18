@@ -1,5 +1,6 @@
 const dbConnection = require("../../dbConnection");
 const {DataTypes} = require("sequelize");
+const Doctor = require("../adminModels/doctorModel");
 
 const Appointment = dbConnection.define("Appointment", {
     id: {
@@ -34,7 +35,9 @@ const Appointment = dbConnection.define("Appointment", {
     message: {
         type: DataTypes.TEXT,
         allowNull: false
-    }
-})
+    },
+});
+
+
 Appointment.sync();
 module.exports = Appointment;
