@@ -9,7 +9,8 @@ const { urlencoded } = require("body-parser");
 const app = express();
 PORT = process.env.PORT || 8989;
 app.use(helmet());
-app.use(express.json(urlencoded({extended: false})));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use("/", clientRoutes);
 app.use("/admin", adminRoutes);
 
