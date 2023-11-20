@@ -73,7 +73,7 @@ const SideBar = () => {
                         <li className="menu-title" key="t-pages">Pages</li>
 
                         <li>
-                            <Link href="#" className="waves-effect">
+                            <Link to={"/admin/administrators"} className="waves-effect">
                                 <i className="bx bx-user-circle"></i>
                                 <span key="t-authentication">Authentication</span>
                             </Link>

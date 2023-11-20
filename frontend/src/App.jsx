@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 // Admin Pages
 import Home from './admin/pages/Home';
 import Login from './admin/pages/Login';
+import Administrator from './admin/pages/Administrator';
 import Register from './admin/pages/Register';
 import AdminService from './admin/pages/Services';
 import AdminDepartment from './admin/pages/Departments';
@@ -29,6 +30,7 @@ const App = ()=> {
         {/* Admin routes */}
         <Route path='/admin' element={<Home />}/>
         <Route path='/admin/register' element={<Register />} />
+        <Route path='/admin/administrators' element={<Administrator />} />
         <Route path='/admin/login' element={<Login />} />
         <Route path='/admin/services' element={<AdminService />} />
         <Route path='/admin/departments' element={<AdminDepartment />} />
