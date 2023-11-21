@@ -4,8 +4,36 @@ const Department = require("../config/models/adminModels/departmentModel");
 const {Doctor, EducationQualification} = require("../config/models/adminModels/doctorModel");
 const workingHours = require("../config/models/adminModels/workinHoursModel");
 const { json } = require("body-parser");
+const bcrypt = require("bcrypt");
 const adminRegister = (req, res)=>{
     res.send("Register");
+}
+
+const createAdmin = async(req, res)=>{
+    const {email, user_name, password, is_admin} = req.body;
+    try {
+       if (!email || !password){
+        res.status(400).json({message: "Enter a valid email and password"});
+       }
+       currentUser = await User.findOne({where: {is_admin: true}});
+       if (!currentUser){
+        res.status(401).json({message: "You don't have admin privileges"});
+       }
+       const salt = 10;
+       const hashedPassword = bcrypt.hash(password, salt);
+
+       const newAdmin = User.create({
+        email: email,
+        user_name: user_name,
+        password: hashedPassword,
+        is_admin: true
+       });
+       console.log(newAdmin);
+       res.status(200).json({message: "Admin created successfully"});
+    } catch (error) {
+        console.log(error);
+        res.status(501).json({message: "Something went wrong"});
+    }
 }
 
 const adminLogin = (req, res) => {
@@ -74,5 +102,6 @@ module.exports = {
     adminDepartment,
     adminServiceCreate,
     adminDoctorCreate,
-    adminDepartmentCreate
+    adminDepartmentCreate,
+    createAdmin
 }

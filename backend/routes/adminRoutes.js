@@ -8,7 +8,8 @@ const {
     adminDepartment,
     adminServiceCreate,
     adminDoctorCreate,
-    adminDepartmentCreate} = require('../controllers/adminController');
+    adminDepartmentCreate,
+    createAdmin} = require('../controllers/adminController');
 const router = express.Router();
 // Get method routes
 router.get("/admin", adminHome);
