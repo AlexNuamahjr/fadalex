@@ -4,11 +4,19 @@ const helmet = require('helmet');
 const dbConnection = require("./config/dbConnection");
 const clientRoutes = require("./routes/clientRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const expressSession = require("express-session");
+const  APP_SECRET = process.env.APP_SECRET;
 const { urlencoded } = require("body-parser");
 
 const app = express();
 PORT = process.env.PORT || 8989;
 app.use(helmet());
+app.use(expressSession({
+    secret: APP_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {}
+}))
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use("/", clientRoutes);

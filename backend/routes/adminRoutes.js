@@ -9,7 +9,9 @@ const {
     adminServiceCreate,
     adminDoctorCreate,
     adminDepartmentCreate,
-    createAdmin} = require('../controllers/adminController');
+    createAdmin,
+    adminLoginAccess,
+    adminLogout} = require('../controllers/adminController');
 const router = express.Router();
 // Get method routes
 router.get("/admin", adminHome);
@@ -23,6 +25,9 @@ router.get("/admin/departments", adminDepartment);
 router.post("/admin/services", adminServiceCreate);
 router.post("/admin/doctor", adminDoctorCreate);
 router.post("/admin/department", adminDepartmentCreate);
+router.post("/admin/register", createAdmin);
+router.post("/admin/login", adminLoginAccess);
+router.post("/admin/logout", adminLogout);
 
 
 module.exports = router;
