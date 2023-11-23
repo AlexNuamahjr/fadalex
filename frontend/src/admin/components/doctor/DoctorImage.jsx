@@ -24,7 +24,6 @@ const DoctorImage = () => {
                             className="display-4 text-muted bx bxs-cloud-upload"
                             ></i>
                         </div>
-
                         <h4>Drop files here or click to upload.</h4>
                         </div>
                     </form>

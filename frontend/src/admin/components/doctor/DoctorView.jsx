@@ -33,7 +33,7 @@ const DoctorView = () => {
                                             <td>tonymillz@gmail.com</td>
                                             <td>tonymillz@gmail.com</td>
                                             <td className="text-center">
-                                                <button className="btn btn-primary">Edit</button>
+                                                <button className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button>
                                                 <button className="btn btn-danger">Delete</button>
                                             </td>
                                         </tr>

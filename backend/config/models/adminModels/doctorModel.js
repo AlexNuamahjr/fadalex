@@ -5,14 +5,14 @@ const Appointment = require("../clientModels/appointmentModel");
 const EducationQualification = dbConnection.define("EducationQualification", {
     education_1:{
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     institution: {
         type: DataTypes.STRING,
         allowNull: false
     },
     year: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     about: {
@@ -59,7 +59,8 @@ const Doctor = dbConnection.define("Doctors", {
 });
 Doctor.sync();
 Doctor.hasMany(EducationQualification);
-EducationQualification.belongsTo(Doctor, {targetKey: "name", foreignKey: "n ame"});
+EducationQualification.belongsTo(Doctor, {targetKey: "name", foreignKey: "name"});
+
 // Doctor.hasMany(Appointment);
 // Appointment.belongsTo(Doctor, {targetKey: "name",foreignKey: "doctorName"});
 

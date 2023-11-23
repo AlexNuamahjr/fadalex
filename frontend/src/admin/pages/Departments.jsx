@@ -7,7 +7,6 @@ const Departments = () => {
     <MasterLayout>
         <div class="page-content">
                     <div class="container-fluid">
-
                         {/* <!-- start page title --> */}
                         <div class="row">
                             <div class="col-12">
@@ -33,14 +32,14 @@ const Departments = () => {
                                         <form>
                                             <div class="mb-3">
                                                 <label for="formrow-firstname-input" class="form-label">Department title</label>
-                                                <input type="text" class="form-control" id="formrow-firstname-input" />
+                                                <input type="text" class="form-control" id="formrow-firstname-input" name="department-title"/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formrow-firstname-input" class="form-label">Department contents</label>
-                                                <input type="text" class="form-control" id="formrow-firstname-input" />
+                                                <textarea class="form-control" placeholder="" id="floatingTextarea" name="department_content"></textarea>
                                             </div>
                                             <div>
-                                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                                <button type="submit" class="btn btn-primary w-md">Add</button>
                                             </div>
                                         </form>
                                     </div>
@@ -61,4 +60,4 @@ const Departments = () => {
   )
 }
 
-export default Departments
+export default Departments;

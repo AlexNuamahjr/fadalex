@@ -26,16 +26,11 @@ const Services = () => {
                         <div className="mb-3 my-3">
                             <label htmlFor="formrow-firstname-input" className="form-label "
                             >Service content</label>
-                            <input
-                            type="text"
-                            className="form-control inputValidator fullName"
-                            id="formrow-firstname-input fullName"
-                            name="service-content"
-                            />
+                            <textarea class="form-control" id="floatingTextarea" name="service_content"></textarea>
                         </div>
                         <div>
                             <button type="submit" className="btn btn-primary w-md" id="btn-Save">
-                            Submit
+                            Add
                             </button>
                         </div>
                         </form>

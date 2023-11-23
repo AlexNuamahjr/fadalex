@@ -13,15 +13,15 @@ const Administrator = () => {
                     <div className="card-body">
                         <h4 className="card-title mb-2">Add Administrator </h4>
                         <h6>All the fields are required</h6>
-                        <form method="post" action="create-admin">
+                        <form method="post" action="">
                         <div className="mb-3 my-3">
-                            <label htmlFor="formrow-firstname-input" className="form-label "
+                            <label htmlFor="formrow-firstname-input" className="form-label"
                             >Full name</label>
                             <input
                             type="text"
                             className="form-control inputValidator fullName"
-                            id="formrow-firstname-input fullName"
-                            name="fullName"
+                            id="formrow-firstname-input"
+                            name="name"
                             />
                         </div>
 
@@ -30,7 +30,7 @@ const Administrator = () => {
                             <div className="mb-3">
                                 <label htmlFor="formrow-email-input" className="form-label"
                                 >Email</label>
-                                <input type="email" className="form-control inputValidator email" id="formrow-email-input email " name="email" />
+                                <input type="email" className="form-control inputValidator email" id="formrow-email-input email" name="email" />
                             </div>
                             </div>
                             <div className="col-md-6">
@@ -81,7 +81,7 @@ const Administrator = () => {
 
                         <div>
                             <button type="submit" className="btn btn-primary w-md" id="btn-Save">
-                            Submit
+                            Add
                             </button>
                         </div>
                         </form>

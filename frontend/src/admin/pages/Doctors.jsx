@@ -10,16 +10,16 @@ const Doctors = () => {
                 <div className="col-xl-6">
                     <div className="card">
                     <div className="card-body">
-                        <h4 className="card-title mb-2">Add Doctor </h4>
-                        <form method="post" action="create-admin">
+                        <h4 className="card-title mb-2">Add Doctor</h4>
+                        <form method="post" action="">
                         <div className="mb-3 my-3">
                             <label htmlFor="formrow-firstname-input" className="form-label "
                             >Doctor name</label>
                             <input
                             type="text"
                             className="form-control inputValidator fullName"
-                            id="formrow-firstname-input fullName"
-                            name="service-title"
+                            id="formrow-firstname-input"
+                            name="name"
                             />
                         </div>
                         <div className="mb-3 my-3">
@@ -28,19 +28,20 @@ const Doctors = () => {
                             <input
                             type="text"
                             className="form-control inputValidator fullName"
-                            id="formrow-firstname-input fullName"
+                            id="formrow-firstname-input"
                             name="specialization"
                             />
                         </div>
                         <div className="mb-3 my-3">
                             <label htmlFor="formrow-firstname-input" className="form-label "
                             >Brief Intro</label>
-                            <input
+                            <textarea class="form-control" placeholder="" id="floatingTextarea" name='brief_info'></textarea>
+                            {/* <input
                             type="text"
                             className="form-control inputValidator fullName"
                             id="formrow-firstname-input fullName"
-                            name="brief-intro"
-                            />
+                            name="brief_intro"
+                            /> */}
                         </div>
                         <div className="row">
                             <div className="col-md-6">
@@ -53,9 +54,27 @@ const Doctors = () => {
                             <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="formrow-password-input" className="form-label"
-                                >Year</label>
+                                >Institution</label>
                                 <input type="text" className="form-control inputValidator password"
-                                id="formrow-password-input  password" name="year_1"
+                                id="formrow-password-input  password" name="institution"
+                                />
+                            </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="formrow-email-input" className="form-label"
+                                >Year</label>
+                                <input type="text" className="form-control inputValidator" id="formrow-email-input email " name="year" />
+                            </div>
+                            </div>
+                            <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="formrow-password-input" className="form-label"
+                                >About</label>
+                                <input type="text" className="form-control inputValidator"
+                                id="formrow-password-input" name="about"
                                 />
                             </div>
                             </div>
@@ -65,22 +84,40 @@ const Doctors = () => {
                             <div className="mb-3">
                                 <label htmlFor="formrow-email-input" className="form-label"
                                 >Education 2</label>
-                                <input type="text" className="form-control inputValidator email" id="formrow-email-input email " name="education_2" />
+                                <input type="text" className="form-control inputValidator" id="formrow-email-input" name="education_2" />
                             </div>
                             </div>
                             <div className="col-md-6">
                             <div className="mb-3">
                                 <label htmlFor="formrow-password-input" className="form-label"
-                                >Year 2</label>
+                                >Institution 2</label>
                                 <input type="text" className="form-control inputValidator password"
-                                id="formrow-password-input  password" name="year_2"
+                                id="formrow-password-input  password" name="institution_2"
+                                />
+                            </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="formrow-email-input" className="form-label"
+                                >Year 2</label>
+                                <input type="text" className="form-control inputValidator email" id="formrow-email-input email " name="year_2" />
+                            </div>
+                            </div>
+                            <div className="col-md-6">
+                            <div className="mb-3">
+                                <label htmlFor="formrow-password-input" className="form-label"
+                                >About 2</label>
+                                <input type="text" className="form-control inputValidator"
+                                id="formrow-password-input" name="about_2"
                                 />
                             </div>
                             </div>
                         </div>
                         <div>
                             <button type="submit" className="btn btn-primary w-md" id="btn-Save">
-                            Submit
+                            Add
                             </button>
                         </div>
                         </form>

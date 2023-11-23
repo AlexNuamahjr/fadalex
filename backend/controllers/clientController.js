@@ -44,14 +44,11 @@ const clientContactCreate = async(req, res)=>{
     const {full_name, email, topic, phone_number, message} = req.body;
     try {
         await Contact.create({full_name, email, topic, phone_number, message});
-        res.status(201).json({message: "Message sent successfully"});
+        return res.status(201).json({message: "Message sent successfully"});
     } catch (error) {
         console.log(error);
-        res.status(501).json({message: "Something went wrong"});
+        return res.status(501).json({message: "Something went wrong"});
     }
-    
-
-
 }
 
 module.exports = {

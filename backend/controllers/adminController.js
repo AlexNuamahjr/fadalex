@@ -3,13 +3,12 @@ const Service = require("../config/models/adminModels/serviceModel");
 const Department = require("../config/models/adminModels/departmentModel");
 const {Doctor, EducationQualification} = require("../config/models/adminModels/doctorModel");
 const workingHours = require("../config/models/adminModels/workinHoursModel");
-const { json } = require("body-parser");
 const bcrypt = require("bcrypt");
 
 // Admin Register Page
 const adminRegister = (req, res)=>{
     res.send("Register");
-}
+};
 // Admin Register
 const createAdmin = async(req, res)=>{
     const {email, user_name, password, is_admin} = req.body;
@@ -40,10 +39,10 @@ const createAdmin = async(req, res)=>{
 // Admin Login Page
 const adminLogin = (req, res) => {
     res.send("Login");
-}
+};
 // Admin Login Access
 const adminLoginAccess = async (req, res)=>{
-    const {email, password} = req.body;
+    const {email, user_name, password} = req.body;
 
     try {
         const userExists = await User.findOne({where: {email: email}});
@@ -55,7 +54,7 @@ const adminLoginAccess = async (req, res)=>{
         if (!isCorrectPassword){
             return res.status(404).json({message: "Invalid credentials"});
         }else{
-            req.session.user = userExists.id;
+            req.session.user = userExists.user_name;
             return res.status(201).json({message: "Login successfully"});
         }
     } catch (error) {
@@ -66,7 +65,6 @@ const adminLoginAccess = async (req, res)=>{
 // Admin Logout
 const adminLogout = async (req, res)=>{
     try {
-       
         req.session.destroy((error)=>{
             if (error){
                 return res.status(401).json({message: "Login failes"});
@@ -78,16 +76,16 @@ const adminLogout = async (req, res)=>{
         console.log(error);
         return res.status(501).json({message: "Something went wrong"});
     }
-}
-
+};
+// Admin Home Page
 const adminHome = (req, res) =>{
     res.send("Home")
-}
-
+};
+// Admin Service Page
 const adminService = (req, res)=>{
     res.send("Service");
-}
-
+};
+// Admin Service Upload
 const adminServiceCreate = async(req, res)=>{
     const {service_title, service_content} = req.body;
     console.log(req.body);
@@ -100,30 +98,32 @@ const adminServiceCreate = async(req, res)=>{
         return res.status(501).json({message: "Something went wrong!"});
     }
 };
+// Update Service
 
+// Admin Doctor Page
 const adminDoctor = (req, res)=>{
     res.send("Doctor");
-}
-
+};
+// Admin Doctor Upload
 const adminDoctorCreate = async(req, res)=>{
     const {name, specialization, brief_intro} = req.body;
-    const {education, institution, year, about, education_2, institution_2, year_2,
+    const {education_1, institution, year, about, education_2, institution_2, year_2,
         about_2} = req.body;
     try {
         await Doctor.create({name, specialization, brief_intro});
-        await EducationQualification.create({education, institution, year, about,
+        await EducationQualification.create({education_1, institution, year, about,
             education_2, year_2, institution_2, about_2,});
         return res.status(200).json({message: "Doctor created successfully"});
     } catch (error) {
         console.log(error);
         return res.status(501).json({message: "Something went wrong"});
     }
-}
-
+};
+// Admin Department Page
 const adminDepartment = (req, res)=>{
     res.send("Department");
 }
-
+// Admin Department Upload
 const adminDepartmentCreate = async(req, res)=>{
     const {department_title, department_content} = req.body;
     try {
@@ -132,7 +132,7 @@ const adminDepartmentCreate = async(req, res)=>{
         console.log(error);
         res.status(501).json({message: "Something went wrong"})
     }
-}
+};
 
 module.exports = {
     adminLogin,
