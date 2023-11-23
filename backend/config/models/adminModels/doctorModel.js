@@ -5,7 +5,7 @@ const Appointment = require("../clientModels/appointmentModel");
 const EducationQualification = dbConnection.define("EducationQualification", {
     education_1:{
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     institution: {
         type: DataTypes.STRING,
@@ -31,7 +31,7 @@ const EducationQualification = dbConnection.define("EducationQualification", {
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    about: {
+    about_2: {
         type: DataTypes.TEXT,
         allowNull: true
     },

@@ -99,7 +99,21 @@ const adminServiceCreate = async(req, res)=>{
     }
 };
 // Update Service
-
+const updateService = async(req, res)=>{
+    try {
+        const {id} = req.query;
+        const {service_title, service_content} = req.body;
+        const updatedService = await Service.update({service_title, service_content}, {where: {id}});
+        if (updatedService){
+            return res.status(201).json({message: "Service update successfully"})
+        }else{
+            return res.status(404).json({message: "Unable to update service"})
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(501).json({message: "Something went wrong"})
+    }
+}
 // Admin Doctor Page
 const adminDoctor = (req, res)=>{
     res.send("Doctor");
@@ -107,8 +121,8 @@ const adminDoctor = (req, res)=>{
 // Admin Doctor Upload
 const adminDoctorCreate = async(req, res)=>{
     const {name, specialization, brief_intro} = req.body;
-    const {education_1, institution, year, about, education_2, institution_2, year_2,
-        about_2} = req.body;
+    const {education_1, institution, year, about, 
+            education_2, institution_2, year_2,about_2} = req.body;
     try {
         await Doctor.create({name, specialization, brief_intro});
         await EducationQualification.create({education_1, institution, year, about,
@@ -119,6 +133,26 @@ const adminDoctorCreate = async(req, res)=>{
         return res.status(501).json({message: "Something went wrong"});
     }
 };
+// Update Doctor
+const updateDoctor = async(req, res)=>{
+    try {
+        const {id} = req.query;
+        const {name, specialization, brief_intro} = req.body;
+            const {education_1, institution, year, about,
+                education_2, institution_2, year_2, about_2} = req.body;
+        const updatedDoctor = await Doctor.update({name, specialization, brief_intro},
+            {education_1, institution, year, about,
+            education_2, institution_2, year_2, about_2, where: {id}});
+        if (updatedDoctor){
+            return res.status(201).json({message: "Doctor updated successfully"});
+        }else{
+            return res.status(404).json({message: "Something went wrong"});
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(501).json({message: "Internal server error"})
+    }
+}
 // Admin Department Page
 const adminDepartment = (req, res)=>{
     res.send("Department");
@@ -127,13 +161,31 @@ const adminDepartment = (req, res)=>{
 const adminDepartmentCreate = async(req, res)=>{
     const {department_title, department_content} = req.body;
     try {
-        await Department.create({department_title, department_content});
+        const createDepartment = await Department.create({department_title, department_content});
+        if (createDepartment){
+            return res.status(201).json({message: "Department created successfully"});
+        }
     } catch (error) {
         console.log(error);
         res.status(501).json({message: "Something went wrong"})
     }
 };
-
+// Update Department
+const updateDepartment = async(req, res)=>{
+    try {
+        const {id} = req.query;
+        const {department_title, department_content} = req.body;
+        const updatedDepartment = await Department.update({department_title, department_content}, {where: {id}});
+        if (updatedDepartment){
+            return res.status(201).json({message: "Department updated successfully"});
+        }else{
+            return res.status(404).json({message: "Something went wrong"});
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(501).json({message: "Internal Server error"});
+    }
+};
 module.exports = {
     adminLogin,
     adminRegister,
@@ -146,5 +198,8 @@ module.exports = {
     adminDepartmentCreate,
     createAdmin,
     adminLoginAccess,
-    adminLogout
+    adminLogout,
+    updateService,
+    updateDoctor,
+    updateDepartment
 }
