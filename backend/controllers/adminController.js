@@ -67,7 +67,7 @@ const adminLogout = async (req, res)=>{
     try {
         req.session.destroy((error)=>{
             if (error){
-                return res.status(401).json({message: "Login failes"});
+                return res.status(401).json({message: "Login failed"});
             }else{
                 return res.status(201).json({message: "Logout successfully"});
             }
@@ -85,17 +85,19 @@ const adminHome = (req, res) =>{
 const adminService = (req, res)=>{
     res.send("Service");
 };
-// Admin Service Upload
+// Admin Service Create
 const adminServiceCreate = async(req, res)=>{
-    const {service_title, service_content} = req.body;
-    console.log(req.body);
     try {
+        const {service_title, service_content} = req.body;
         const service = await Service.create({service_title, service_content});
-        console.log(service);
-        return res.status(200).json({message: "Service created successfully"});
+        if (service){
+            return res.status(200).json({message: "Service created successfully"});
+        }else{
+            return res.status(404).json({message: "Something went wrong!"})
+        }
     } catch (error) {
         console.log(error);
-        return res.status(501).json({message: "Something went wrong!"});
+        return res.status(501).json({message: "Internal server error"});
     }
 };
 // Update Service
@@ -107,11 +109,26 @@ const updateService = async(req, res)=>{
         if (updatedService){
             return res.status(201).json({message: "Service update successfully"})
         }else{
-            return res.status(404).json({message: "Unable to update service"})
+            return res.status(404).json({message: "Service not found"})
         }
     } catch (error) {
         console.log(error);
         return res.status(501).json({message: "Something went wrong"})
+    }
+};
+// Delete Service
+const serviceDelete = async(req, res)=>{
+    try {
+        const {id} = req.query;
+        const deleteService = await Service.destroy({where: {id}});
+        if (deleteService){
+            return res.status(201).json({message: "Service deleted  successfully"});
+        }else{
+            return res.status(404).json({message: "Service not found"});
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(501).json({message: "Internal server error"})
     }
 }
 // Admin Doctor Page
@@ -157,7 +174,7 @@ const updateDoctor = async(req, res)=>{
 const adminDepartment = (req, res)=>{
     res.send("Department");
 }
-// Admin Department Upload
+// Admin Department Create
 const adminDepartmentCreate = async(req, res)=>{
     const {department_title, department_content} = req.body;
     try {
@@ -186,6 +203,21 @@ const updateDepartment = async(req, res)=>{
         return res.status(501).json({message: "Internal Server error"});
     }
 };
+// Admin Department Delete
+const deleteDepartment = async(req, res)=>{
+    try {
+        const {id} = req.query;
+        const deletedDepartment = await Department.destroy({where: {id}});
+        if (deletedDepartment){
+            return res.status(201).json({message: "Department deleted successfully"});
+        }else{
+            return res.status(404).json({message: "Department not found"});
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(501).json({message: "Internal server error"});
+    }
+};
 module.exports = {
     adminLogin,
     adminRegister,
@@ -201,5 +233,7 @@ module.exports = {
     adminLogout,
     updateService,
     updateDoctor,
-    updateDepartment
+    updateDepartment,
+    serviceDelete,
+    deleteDepartment
 }
