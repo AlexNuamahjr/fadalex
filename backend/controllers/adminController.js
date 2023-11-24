@@ -106,7 +106,7 @@ const updateService = async(req, res)=>{
         const {id} = req.query;
         const {service_title, service_content} = req.body;
         const updatedService = await Service.update({service_title, service_content}, {where: {id}});
-        if (updatedService){
+        if (updatedService > 0){
             return res.status(201).json({message: "Service update successfully"})
         }else{
             return res.status(404).json({message: "Service not found"})
@@ -139,11 +139,11 @@ const adminDoctor = (req, res)=>{
 const adminDoctorCreate = async(req, res)=>{
     const {name, specialization, brief_intro} = req.body;
     const {education_1, institution, year, about, 
-            education_2, institution_2, year_2,about_2} = req.body;
+            education_2, institution_2, year_2,about_2, doctorId} = req.body;
     try {
         await Doctor.create({name, specialization, brief_intro});
         await EducationQualification.create({education_1, institution, year, about,
-            education_2, year_2, institution_2, about_2,});
+            education_2, year_2, institution_2, about_2, doctorId});
         return res.status(200).json({message: "Doctor created successfully"});
     } catch (error) {
         console.log(error);
@@ -153,17 +153,21 @@ const adminDoctorCreate = async(req, res)=>{
 // Update Doctor
 const updateDoctor = async(req, res)=>{
     try {
-        const {id} = req.query;
+        const {doctorId} = req.query;
         const {name, specialization, brief_intro} = req.body;
             const {education_1, institution, year, about,
                 education_2, institution_2, year_2, about_2} = req.body;
-        const updatedDoctor = await Doctor.update({name, specialization, brief_intro},
-            {education_1, institution, year, about,
-            education_2, institution_2, year_2, about_2, where: {id}});
-        if (updatedDoctor){
+        const doctor = await Doctor.findByPk(doctorId);
+        if (!doctor){
+            console.log(`Doctor with ID ${doctorId} not found.`);
+            return res.status(404).json({message: "Doctor not found"});
+        }
+        await doctor .update({name, specialization, brief_intro});
+        const educationQualifications = await EducationQualification.findAll({where: {doctorId: doctorId}});
+        if (educationQualifications){
+            await EducationQualification.update({education_1, institution, year, about,
+            education_2, institution_2, year_2, about_2});
             return res.status(201).json({message: "Doctor updated successfully"});
-        }else{
-            return res.status(404).json({message: "Something went wrong"});
         }
     } catch (error) {
         console.log(error);
@@ -193,10 +197,10 @@ const updateDepartment = async(req, res)=>{
         const {id} = req.query;
         const {department_title, department_content} = req.body;
         const updatedDepartment = await Department.update({department_title, department_content}, {where: {id}});
-        if (updatedDepartment){
+        if (updatedDepartment > 0){
             return res.status(201).json({message: "Department updated successfully"});
         }else{
-            return res.status(404).json({message: "Something went wrong"});
+            return res.status(404).json({message: "Department not found"});
         }
     } catch (error) {
         console.log(error);
