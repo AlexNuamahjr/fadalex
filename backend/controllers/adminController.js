@@ -175,7 +175,21 @@ const adminUpdateDoctor = async (req, res)=>{
         return res.status(501).json({message: "Internal server error"});
     }
 }
-
+// Admin Delete Doctor
+const adminDeleteDoctor = async(req, res)=>{
+    try {
+        const {id} = req.query;
+        const deleteDoctor = await Doctor.destroy({where: {id}});
+        if (deleteDoctor){
+            return res.status(200).json({message: "Doctor deleted successfully"});
+        }else{
+            return res.status(500).json({message: "Doctor not found"});
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "Internal server error"});
+    }
+}
 // Admin Department Page
 const adminDepartment = (req, res)=>{
     res.send("Department");
@@ -241,5 +255,6 @@ module.exports = {
     adminUpdateDoctor,
     updateDepartment,
     serviceDelete,
-    deleteDepartment
+    deleteDepartment,
+    adminDeleteDoctor
 }

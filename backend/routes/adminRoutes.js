@@ -17,7 +17,8 @@ const {
     adminUpdateDoctor,
     updateDepartment,
     serviceDelete,
-    deleteDepartment} = require('../controllers/adminController');
+    deleteDepartment,
+    adminDeleteDoctor} = require('../controllers/adminController');
 const router = express.Router();
 // Get method routes
 router.get("/", isAuthenticated, adminHome);
@@ -40,4 +41,5 @@ router.put("/departments", updateDepartment);
 // Delete routes
 router.delete("/services", serviceDelete);
 router.delete("/departments", deleteDepartment);
+router.delete("/doctors", adminDeleteDoctor);
 module.exports = router;
