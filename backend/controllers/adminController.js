@@ -1,7 +1,7 @@
 const User = require("../config/models/adminModels/userModel");
 const Service = require("../config/models/adminModels/serviceModel");
 const Department = require("../config/models/adminModels/departmentModel");
-const {Doctor, EducationQualification} = require("../config/models/adminModels/doctorModel");
+const Doctor = require("../config/models/adminModels/doctorModel");
 const workingHours = require("../config/models/adminModels/workinHoursModel");
 const bcrypt = require("bcrypt");
 
@@ -135,45 +135,47 @@ const serviceDelete = async(req, res)=>{
 const adminDoctor = (req, res)=>{
     res.send("Doctor");
 };
-// Admin Doctor Upload
-const adminDoctorCreate = async(req, res)=>{
-    const {name, specialization, brief_intro} = req.body;
-    const {education_1, institution, year, about, 
-            education_2, institution_2, year_2,about_2, doctorId} = req.body;
+// Admin Create Doctor
+const adminCreateDoctor = async(req, res)=>{
     try {
-        await Doctor.create({name, specialization, brief_intro});
-        await EducationQualification.create({education_1, institution, year, about,
-            education_2, year_2, institution_2, about_2, doctorId});
-        return res.status(200).json({message: "Doctor created successfully"});
-    } catch (error) {
-        console.log(error);
-        return res.status(501).json({message: "Something went wrong"});
-    }
-};
-// Update Doctor
-const updateDoctor = async(req, res)=>{
-    try {
-        const {doctorId} = req.query;
-        const {name, specialization, brief_intro} = req.body;
-            const {education_1, institution, year, about,
-                education_2, institution_2, year_2, about_2} = req.body;
-        const doctor = await Doctor.findByPk(doctorId);
-        if (!doctor){
-            console.log(`Doctor with ID ${doctorId} not found.`);
-            return res.status(404).json({message: "Doctor not found"});
-        }
-        await doctor .update({name, specialization, brief_intro});
-        const educationQualifications = await EducationQualification.findAll({where: {doctorId: doctorId}});
-        if (educationQualifications){
-            await EducationQualification.update({education_1, institution, year, about,
-            education_2, institution_2, year_2, about_2});
-            return res.status(201).json({message: "Doctor updated successfully"});
+        const {doctor_name, specialization, brief_intro,
+            education_1, institution, year, about,
+            education_2, institution_2, year_2, about_2} = req.body;
+        const doctor = await Doctor.create({doctor_name, specialization, brief_intro,
+                                    education_1, institution, year, about,
+                                    education_2, institution_2, year_2, about_2});
+        if (doctor){
+            return res.status(200).json({message: "Doctor created successfully"});
+        }else{
+            return res.status(404).json({message: "Error creating doctor"});
         }
     } catch (error) {
         console.log(error);
         return res.status(501).json({message: "Internal server error"})
     }
+    
 }
+// Admin Doctor Update
+const adminUpdateDoctor = async (req, res)=>{
+    try {
+        const {id} = req.query;
+        const {doctor_name, specialization, brief_intro,
+            education_1, institution, year, about,
+            education_2, institution_2, year_2, about_2} = req.body;
+        const updatedDoctor = await Doctor.update({doctor_name, specialization, brief_intro,
+            education_1, institution, year, about,
+            education_2, institution_2, year_2, about_2}, {where: {id}});
+        if (updatedDoctor > 0){
+            return res.status(200).json({message: "Doctor updated successfully"});
+        }else{
+            return res.status(404).json({message: "Doctor not found"})
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(501).json({message: "Internal server error"});
+    }
+}
+
 // Admin Department Page
 const adminDepartment = (req, res)=>{
     res.send("Department");
@@ -230,13 +232,13 @@ module.exports = {
     adminDoctor,
     adminDepartment,
     adminServiceCreate,
-    adminDoctorCreate,
+    adminCreateDoctor,
     adminDepartmentCreate,
     createAdmin,
     adminLoginAccess,
     adminLogout,
     updateService,
-    updateDoctor,
+    adminUpdateDoctor,
     updateDepartment,
     serviceDelete,
     deleteDepartment

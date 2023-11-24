@@ -1,8 +1,30 @@
 const dbConnection = require("../../dbConnection");
 const {DataTypes} = require("sequelize");
-const Appointment = require("../clientModels/appointmentModel");
 
-const EducationQualification = dbConnection.define("EducationQualification", {
+// const EducationQualification = dbConnection.define("EducationQualification", {
+    
+    
+// });
+// EducationQualification.sync({})
+
+const Doctor = dbConnection.define("Doctors", {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    doctor_name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    specialization: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    brief_intro:{
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
     education_1:{
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,36 +58,8 @@ const EducationQualification = dbConnection.define("EducationQualification", {
         allowNull: true
     },
 });
-EducationQualification.sync();
+Doctor.sync()
+// Doctor.hasMany(EducationQualification);
+// EducationQualification.belongsTo(Doctor, {targetKey: "id", foreignKey: "doctorId"});
 
-const Doctor = dbConnection.define("Doctors", {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    specialization: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    brief_intro:{
-        type: DataTypes.TEXT,
-        allowNull: false
-    },
-});
-Doctor.sync();
-Doctor.hasMany(EducationQualification);
-EducationQualification.belongsTo(Doctor, {targetKey: "name", foreignKey: "name"});
-
-// Doctor.hasMany(Appointment);
-// Appointment.belongsTo(Doctor, {targetKey: "name",foreignKey: "doctorName"});
-
-
-module.exports = {
-    Doctor,
-    EducationQualification
-}
+module.exports = Doctor

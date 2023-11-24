@@ -8,13 +8,13 @@ const {
     adminService,
     adminDepartment,
     adminServiceCreate,
-    adminDoctorCreate,
+    adminCreateDoctor,
     adminDepartmentCreate,
     createAdmin,
     adminLoginAccess,
     adminLogout,
     updateService,
-    updateDoctor,
+    adminUpdateDoctor,
     updateDepartment,
     serviceDelete,
     deleteDepartment} = require('../controllers/adminController');
@@ -28,14 +28,14 @@ router.get("/doctors", isAuthenticated, adminDoctor);
 router.get("/departments", isAuthenticated, adminDepartment);
 // Post method routes
 router.post("/services", adminServiceCreate);
-router.post("/doctors", adminDoctorCreate);
+router.post("/doctors", adminCreateDoctor);
 router.post("/departments", adminDepartmentCreate);
 router.post("/register", createAdmin);
 router.post("/login", adminLoginAccess);
 router.post("/logout", adminLogout);
 // Update routes
 router.put("/services", updateService);
-router.put("/doctors", updateDoctor);
+router.put("/doctors", adminUpdateDoctor);
 router.put("/departments", updateDepartment);
 // Delete routes
 router.delete("/services", serviceDelete);
