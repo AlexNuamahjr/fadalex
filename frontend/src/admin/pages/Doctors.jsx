@@ -36,12 +36,6 @@ const Doctors = () => {
                             <label htmlFor="formrow-firstname-input" className="form-label "
                             >Brief Intro</label>
                             <textarea class="form-control" placeholder="" id="floatingTextarea" name='brief_info'></textarea>
-                            {/* <input
-                            type="text"
-                            className="form-control inputValidator fullName"
-                            id="formrow-firstname-input fullName"
-                            name="brief_intro"
-                            /> */}
                         </div>
                         <div className="row">
                             <div className="col-md-6">
