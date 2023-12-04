@@ -59,7 +59,4 @@ const Doctor = dbConnection.define("Doctors", {
     },
 });
 Doctor.sync()
-// Doctor.hasMany(EducationQualification);
-// EducationQualification.belongsTo(Doctor, {targetKey: "id", foreignKey: "doctorId"});
-
 module.exports = Doctor

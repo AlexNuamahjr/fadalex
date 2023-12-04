@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const helmet = require('helmet');
+const cors = require("cors");
 const dbConnection = require("./config/dbConnection");
 const clientRoutes = require("./routes/clientRoutes");
 const adminRoutes = require("./routes/adminRoutes");
@@ -19,6 +20,9 @@ app.use(expressSession({
 }))
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors({
+    origin: "http://localhost:5173",
+}));
 app.use("/", clientRoutes);
 app.use("/admin", adminRoutes);
 

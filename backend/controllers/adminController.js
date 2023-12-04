@@ -79,11 +79,11 @@ const adminLogout = async (req, res)=>{
 };
 // Admin Home Page
 const adminHome = (req, res) =>{
-    res.send("Home")
+    res.send("/admin")
 };
 // Admin Service Page
 const adminService = (req, res)=>{
-    res.send("Service");
+    res.send("/services");
 };
 // Admin Service Create
 const adminServiceCreate = async(req, res)=>{
@@ -92,6 +92,7 @@ const adminServiceCreate = async(req, res)=>{
         const service = await Service.create({service_title, service_content});
         if (service){
             return res.status(200).json({message: "Service created successfully"});
+            // res.redirect("/admin/services");
         }else{
             return res.status(404).json({message: "Something went wrong!"})
         }
@@ -200,11 +201,11 @@ const adminDepartmentCreate = async(req, res)=>{
     try {
         const createDepartment = await Department.create({department_title, department_content});
         if (createDepartment){
-            return res.status(201).json({message: "Department created successfully"});
+            return res.status(200).json({message: "Department created successfully"});
         }
     } catch (error) {
         console.log(error);
-        res.status(501).json({message: "Something went wrong"})
+        res.status(500).json({message: "Something went wrong"})
     }
 };
 // Update Department
