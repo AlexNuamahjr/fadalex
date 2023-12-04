@@ -16,8 +16,6 @@ import Departments from './client/pages/Departments';
 // Client Pages
 
 const App = ()=> {
-  
-
   return (
     <BrowserRouter>
       <Routes>

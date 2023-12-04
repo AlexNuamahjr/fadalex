@@ -3,11 +3,11 @@ import Footer from "./Footer";
 
 const MasterLayout = ({children}) => {
   return (
-    <body id="top">
+    <div id="top">
         <Header />
         {children}
         
-    </body>
+    </div>
   )
 }
 

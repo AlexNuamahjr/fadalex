@@ -53,22 +53,22 @@ const DoctorView = () => {
             <div className="modal-content">
                 <div className="modal-header">
                 <h1 className="modal-title fs-5" id="exampleModalLabel">Update Doctor</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
                     <form>
                         <div className="mb-3">
                         <label className="form-label">Doctor Name</label>
-                        <input type="text" name="name" class="form-control input-validator" id="first_name" aria-describedby="emailHelp" />
+                        <input type="text" name="name" className="form-control input-validator" id="first_name" aria-describedby="emailHelp" />
                         </div>
                         <div className="mb-3">
                         <label className="form-label">Specialization</label>
-                        <input type="text" name="specialization" class="form-control input-validator" id="last_name" />
+                        <input type="text" name="specialization" className="form-control input-validator" id="last_name" />
                         </div>
                         <div className="mb-3 my-3">
                             <label htmlFor="formrow-firstname-input" className="form-label "
                             >Brief Intro</label>
-                            <textarea class="form-control" placeholder="" id="floatingTextarea" name='brief_info'></textarea>
+                            <textarea className="form-control" placeholder="" id="floatingTextarea" name='brief_info'></textarea>
                         </div>
                         <div className="row">
                             <div className="col-md-6">
@@ -142,9 +142,9 @@ const DoctorView = () => {
                             </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
+                            <button type="submit" id="btnSave" className="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>

@@ -5,9 +5,10 @@ import Header from './Header'
 
 const MasterLayout = ({children}) => {
   return (
-    <body data-sidebar="dark">
+    <>
+    {/* // <body data-sidebar="dark"> */}
 
-    {/* <body data-layout="horizontal" data-topbar="dark"> */}
+        {/* <body data-layout="horizontal" data-topbar="dark"> */}
 
         {/* <!-- Begin page --> */}
         <div id="layout-wrapper">
@@ -233,9 +234,10 @@ const MasterLayout = ({children}) => {
 
         {/* <!-- Right bar overlay--> */}
         <div className="rightbar-overlay"></div>
+        </>
 
         
-    </body>
+    
   )
 }
 

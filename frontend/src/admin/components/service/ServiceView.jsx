@@ -45,21 +45,21 @@ const ServiceView = () => {
             <div className="modal-content">
                 <div className="modal-header">
                 <h1 className="modal-title fs-5" id="exampleModalLabel">Update Service</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
                     <form>
                         <div className="mb-3">
                         <label className="form-label">Service Title</label>
-                        <input type="text" name="service_title" class="form-control input-validator" id="first_name" aria-describedby="emailHelp" />
+                        <input type="text" name="service_title" className="form-control input-validator" id="first_name" aria-describedby="emailHelp" />
                         </div>
                         <div className="mb-3">
                         <label className="form-label">Service Content</label>
                         <textarea className="form-control" id="floatingTextarea" name="service_content"></textarea>
                         </div>
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
+                            <button type="submit" id="btnSave" className="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>
