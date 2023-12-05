@@ -1,6 +1,5 @@
-const dbConnection = require("../../dbConnection");
-const {DataTypes} = require("sequelize");
-const Doctor = require("../adminModels/doctorModel");
+import {DataTypes} from "sequelize";
+import dbConnection from "../../dbConnection.js";
 
 const Appointment = dbConnection.define("Appointment", {
     id: {
@@ -40,4 +39,5 @@ const Appointment = dbConnection.define("Appointment", {
 
 
 Appointment.sync();
-module.exports = Appointment;
+// module.exports = Appointment;
+export default Appointment;

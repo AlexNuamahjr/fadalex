@@ -1,11 +1,12 @@
-const express = require("express");
-require("dotenv").config();
-const helmet = require('helmet');
-const cors = require("cors");
-const dbConnection = require("./config/dbConnection");
-const clientRoutes = require("./routes/clientRoutes");
-const adminRoutes = require("./routes/adminRoutes");
-const expressSession = require("express-session");
+import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
+import helmet from "helmet";
+import cors from "cors";
+import dbConnection from "./config/dbConnection.js";
+import clientRoutes from "./routes/clientRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
+import expressSession from "express-session";
 const  APP_SECRET = process.env.APP_SECRET;
 const { urlencoded } = require("body-parser");
 
@@ -34,5 +35,4 @@ app.listen(PORT, ()=>{
     } catch (error) {
         console.log(error);
     }
-    
 })

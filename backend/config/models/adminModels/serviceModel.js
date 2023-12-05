@@ -1,5 +1,5 @@
-const dbConnection =  require("../../dbConnection");
-const {DataTypes} = require("sequelize")
+import {DataTypes} from "sequelize";
+import dbConnection from "../../dbConnection.js";
 
 const Service = dbConnection.define("Service", {
     id: {
@@ -17,4 +17,5 @@ const Service = dbConnection.define("Service", {
     }
 })
 Service.sync()
-module.exports = Service;
+// module.exports = Service;
+export default Service;

@@ -1,6 +1,6 @@
-const express = require("express");
-const isAuthenticated = require("../middleware/protect");
-const {
+import express from "express";
+import isAuthenticated from "../middleware/protect.js";
+import {
     adminHome, 
     adminRegister, 
     adminLogin,
@@ -18,7 +18,8 @@ const {
     updateDepartment,
     serviceDelete,
     deleteDepartment,
-    adminDeleteDoctor} = require('../controllers/adminController');
+    adminDeleteDoctor} 
+from '../controllers/adminController.js';
 const router = express.Router();
 // Get method routes
 router.get("/", isAuthenticated, adminHome);
@@ -42,4 +43,5 @@ router.put("/departments", updateDepartment);
 router.delete("/services", serviceDelete);
 router.delete("/departments", deleteDepartment);
 router.delete("/doctors", adminDeleteDoctor);
-module.exports = router;
+// module.exports = router;
+export default router;

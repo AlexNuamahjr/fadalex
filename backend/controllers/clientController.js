@@ -1,5 +1,5 @@
-const Appointment = require("../config/models/clientModels/appointmentModel");
-const Contact = require('../config/models/clientModels/contactModel');
+import Appointment from "../config/models/clientModels/appointmentModel.js";
+import Contact from "../config/models/clientModels/contactModel.js";
 const clientHome = (req, res)=>{
     res.send("Client Home Page");
 }
@@ -51,7 +51,7 @@ const clientContactCreate = async(req, res)=>{
     }
 }
 
-module.exports = {
+export {
     clientHome,
     clientAbout,
     clientService,

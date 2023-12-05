@@ -1,5 +1,5 @@
-const dbConnection = require("../../dbConnection");
-const {DataTypes} = require("sequelize");
+import {DataTypes} from "sequelize";
+import dbConnection from "../../dbConnection.js";
 
 const workingHours = dbConnection.define("Working_hours", {
     id: {
@@ -33,4 +33,5 @@ const workingHours = dbConnection.define("Working_hours", {
     }
 });
 workingHours.sync();
-module.exports = workingHours;
+// module.exports = workingHours;
+export default workingHours;

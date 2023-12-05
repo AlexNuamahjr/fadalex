@@ -1,5 +1,5 @@
-const express = require("express");
-const { 
+import express from "express";
+import { 
     clientHome,
     clientAbout,
     clientService,
@@ -8,7 +8,7 @@ const {
     clientDepartment,
     clientContactCreate,
     clientAppointment,
-    clientAppointmentCreate} = require("../controllers/clientController");
+    clientAppointmentCreate} from "../controllers/clientController.js";
 const clientRouter = express.Router();
 
 clientRouter.get("/", clientHome);
@@ -23,4 +23,4 @@ clientRouter.get("/appointment", clientAppointment);
 clientRouter.post("/contact-us", clientContactCreate);
 clientRouter.post("/appointment", clientAppointmentCreate);
 
-module.exports = clientRouter;
+export default clientRouter;

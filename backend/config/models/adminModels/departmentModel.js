@@ -1,5 +1,5 @@
-const {DataTypes} = require("sequelize");
-const dbConnection = require("../../dbConnection");
+import {DataTypes} from "sequelize";
+import dbConnection from "../../dbConnection.js";
 
 const Departments = dbConnection.define("Departments", {
     id: {
@@ -18,4 +18,4 @@ const Departments = dbConnection.define("Departments", {
     }
 })
 Departments.sync();
-module.exports = Departments;
+export default Departments;

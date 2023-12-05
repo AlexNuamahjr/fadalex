@@ -1,9 +1,9 @@
-const User = require("../config/models/adminModels/userModel");
-const Service = require("../config/models/adminModels/serviceModel");
-const Department = require("../config/models/adminModels/departmentModel");
-const Doctor = require("../config/models/adminModels/doctorModel");
-const workingHours = require("../config/models/adminModels/workinHoursModel");
-const bcrypt = require("bcrypt");
+import User from "../config/models/adminModels/userModel.js";
+import Service from "../config/models/adminModels/serviceModel.js";
+import Departments from "../config/models/adminModels/departmentModel.js";
+import Doctor from "../config/models/adminModels/doctorModel.js";
+import workingHours from "../config/models/adminModels/workinHoursModel.js";
+import bcrypt from "bcrypt";
 
 // Admin Register Page
 const adminRegister = (req, res)=>{
@@ -199,7 +199,7 @@ const adminDepartment = (req, res)=>{
 const adminDepartmentCreate = async(req, res)=>{
     const {department_title, department_content} = req.body;
     try {
-        const createDepartment = await Department.create({department_title, department_content});
+        const createDepartment = await Departments.create({department_title, department_content});
         if (createDepartment){
             return res.status(200).json({message: "Department created successfully"});
         }
@@ -213,7 +213,7 @@ const updateDepartment = async(req, res)=>{
     try {
         const {id} = req.query;
         const {department_title, department_content} = req.body;
-        const updatedDepartment = await Department.update({department_title, department_content}, {where: {id}});
+        const updatedDepartment = await Departments.update({department_title, department_content}, {where: {id}});
         if (updatedDepartment > 0){
             return res.status(201).json({message: "Department updated successfully"});
         }else{
@@ -228,7 +228,7 @@ const updateDepartment = async(req, res)=>{
 const deleteDepartment = async(req, res)=>{
     try {
         const {id} = req.query;
-        const deletedDepartment = await Department.destroy({where: {id}});
+        const deletedDepartment = await Departments.destroy({where: {id}});
         if (deletedDepartment){
             return res.status(201).json({message: "Department deleted successfully"});
         }else{
@@ -239,7 +239,7 @@ const deleteDepartment = async(req, res)=>{
         return res.status(501).json({message: "Internal server error"});
     }
 };
-module.exports = {
+export {
     adminLogin,
     adminRegister,
     adminHome,

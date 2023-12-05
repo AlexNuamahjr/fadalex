@@ -1,5 +1,5 @@
-const dbConnection = require("../../dbConnection");
-const {DataTypes} = require("sequelize");
+import {DataTypes} from "sequelize";
+import dbConnection from "../../dbConnection.js";
 
 const Contact = dbConnection.define("Contact", {
     id: {
@@ -29,4 +29,4 @@ const Contact = dbConnection.define("Contact", {
     }
 })
 Contact.sync();
-module.exports = Contact;
+export default Contact;
