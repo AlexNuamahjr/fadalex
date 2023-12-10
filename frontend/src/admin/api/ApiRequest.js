@@ -11,11 +11,12 @@ async function createResource (endpoint, formData){
     }
 }
 
-async function getRecords(endpoint){
+async function getRecords(endpoint, formData){
     try {
-        
+       const res = await axios.get(endpoint, formData)
+       return res;
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
