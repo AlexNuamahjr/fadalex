@@ -8,10 +8,10 @@ import clientRoutes from "./routes/clientRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import expressSession from "express-session";
 const  APP_SECRET = process.env.APP_SECRET;
-const { urlencoded } = require("body-parser");
+// const { urlencoded } = require("body-parser");
 
 const app = express();
-PORT = process.env.PORT || 8989;
+const PORT = process.env.PORT || 8989;
 app.use(helmet());
 app.use(expressSession({
     secret: APP_SECRET,
