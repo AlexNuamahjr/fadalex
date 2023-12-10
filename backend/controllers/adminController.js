@@ -16,7 +16,7 @@ const createAdmin = async(req, res)=>{
        if (!email || !password){
         return res.status(400).json({message: "Enter a valid email and password"});
        }
-       currentUser = await User.findOne({where: {is_admin: true}});
+       const currentUser = await User.findOne({where: {is_admin: true}});
        if (!currentUser){
         return res.status(401).json({message: "You don't have admin privileges"});
        }
@@ -82,23 +82,39 @@ const adminHome = (req, res) =>{
     res.send("/admin")
 };
 // Admin Service Page
-const adminService = (req, res)=>{
-    res.send("/services");
-};
-// Admin Service Create
-const adminServiceCreate = async(req, res)=>{
+const adminService = async (req, res)=>{
     try {
-        const {service_title, service_content} = req.body;
-        const service = await Service.create({service_title, service_content});
-        if (service){
-            return res.status(200).json({message: "Service created successfully"});
-            // res.redirect("/admin/services");
+        const allServices = await Service.findAll();
+        if (allServices.length > 0){
+            return res.status(200).json(allServices);
         }else{
-            return res.status(404).json({message: "Something went wrong!"})
+            return res.status(404).json({message: "No Service found"});
         }
     } catch (error) {
         console.log(error);
-        return res.status(501).json({message: "Internal server error"});
+        return res.status(500).json({message: "Internal server error"}); 
+    }
+};
+// Admin Service Create
+const adminServiceCreate = async(req, res)=>{
+    const {service_title, service_content} = req.body;
+    try {
+        if (!service_title || !service_content){
+            return res.status(400).json({message: "Service title and content are required!"});
+        }
+        const newService = await Service.create({service_title, service_content});
+        return res.status(200).json({message: "Service created successfully", service: newService});
+    } catch (error) {
+        console.error(error);
+         // Handle validation errors
+         if (error.name === "SequelizeValidationError") {
+            const validationErrors = error.errors.map((err) => ({
+                message: err.message,
+                field: err.path,
+                value: err.value,
+            }));
+            return res.status(400).json({ message: "Validation error", errors: validationErrors });
+        }
     }
 };
 // Update Service
@@ -133,28 +149,32 @@ const serviceDelete = async(req, res)=>{
     }
 }
 // Admin Doctor Page
-const adminDoctor = (req, res)=>{
-    res.send("Doctor");
+const adminDoctor = async (req, res)=>{
+    const allDoctors = await Doctor.findAll();
+    if (allDoctors.length > 0){
+        return res.status(200).json(allDoctors);
+    }else{
+        return res.status(400).json({message: "No doctor found!"});
+    }
 };
 // Admin Create Doctor
 const adminCreateDoctor = async(req, res)=>{
+    const {doctor_name, specialization, brief_intro,
+        education_1, institution, year, about,
+        education_2, institution_2, year_2, about_2} = req.body;
     try {
-        const {doctor_name, specialization, brief_intro,
-            education_1, institution, year, about,
-            education_2, institution_2, year_2, about_2} = req.body;
-        const doctor = await Doctor.create({doctor_name, specialization, brief_intro,
+        if (!doctor_name || !specialization || !brief_intro ||
+            !education_1 || !institution || !year || !about){
+                return res.status(400).json({message: "The above fields are required!"})
+            }
+        const newDoctor = await Doctor.create({doctor_name, specialization, brief_intro,
                                     education_1, institution, year, about,
                                     education_2, institution_2, year_2, about_2});
-        if (doctor){
-            return res.status(200).json({message: "Doctor created successfully"});
-        }else{
-            return res.status(404).json({message: "Error creating doctor"});
-        }
+        return res.status(200).json({message: "Doctor created successfully", doctor: newDoctor});
     } catch (error) {
-        console.log(error);
-        return res.status(501).json({message: "Internal server error"})
+        console.error(error);
+        return res.status(500).json({message: "Internal server error"})
     }
-    
 }
 // Admin Doctor Update
 const adminUpdateDoctor = async (req, res)=>{
@@ -192,20 +212,32 @@ const adminDeleteDoctor = async(req, res)=>{
     }
 }
 // Admin Department Page
-const adminDepartment = (req, res)=>{
-    res.send("Department");
+const adminDepartment = async (req, res)=>{
+    try {
+        const allDepartments = await Departments.findAll();
+        if (allDepartments.length > 0){
+            return res.status(200).json(allDepartments);
+        }else{
+            return res.status(404).json({message: "No departments found"});
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "Internal sever error"})
+    }
+    
 }
 // Admin Department Create
 const adminDepartmentCreate = async(req, res)=>{
     const {department_title, department_content} = req.body;
     try {
-        const createDepartment = await Departments.create({department_title, department_content});
-        if (createDepartment){
-            return res.status(200).json({message: "Department created successfully"});
+        if (!department_title || !department_content){
+            return res.status(400).json({message: "No departments found"})
         }
+        const newDepartment = await Departments.create({department_title, department_content});
+        return res.status(200).json({message: "Department created successfully", department: newDepartment});
     } catch (error) {
-        console.log(error);
-        res.status(500).json({message: "Something went wrong"})
+        console.error(error);
+        res.status(500).json({message: "Internal server error!"})
     }
 };
 // Update Department
@@ -230,13 +262,13 @@ const deleteDepartment = async(req, res)=>{
         const {id} = req.query;
         const deletedDepartment = await Departments.destroy({where: {id}});
         if (deletedDepartment){
-            return res.status(201).json({message: "Department deleted successfully"});
+            return res.status(200).json({message: "Department deleted successfully"});
         }else{
             return res.status(404).json({message: "Department not found"});
         }
     } catch (error) {
         console.log(error);
-        return res.status(501).json({message: "Internal server error"});
+        return res.status(500).json({message: "Internal server error"});
     }
 };
 export {
